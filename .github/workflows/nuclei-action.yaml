@@ -1,0 +1,39 @@
+name: Nuclei Action
+
+on:
+    workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+
+      - name: Setup golang
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.14
+
+      - name: Setting up ProjectDiscovery tools
+        if: steps.cache-go.outputs.cache-hit != 'true'
+        env:
+          GO111MODULE: on
+        run: |
+          go get -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@eb96e701b50767ec854601af7053795f4c2779b9
+        shell: bash
+
+      - name: Downloading Nuclei Templates
+        run: |
+          nuclei -update-templates
+        shell: bash
+
+      - name: Running Nuclei
+        run: |
+          echo https://resources.hackerone.com | nuclei -t dns -irr -sf nuclei.sarif
+        shell: bash
+
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: nuclei.sarif

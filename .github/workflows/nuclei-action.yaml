@@ -30,7 +30,7 @@ jobs:
 
       - name: Running Nuclei
         run: |
-          echo https://docs.hackerone.com | nuclei -t dns -irr -sf nuclei.sarif
+          echo https://example.com | nuclei -t ~/nuclei-templates -irr -sf nuclei.sarif
         shell: bash
 
       - name: Upload SARIF file

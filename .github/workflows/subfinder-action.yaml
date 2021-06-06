@@ -15,4 +15,4 @@ jobs:
           go-version: 1.15
       - uses: ehsandeep/nuclei-action@main
         with:
-          domains-list: domains.txt
+          urls: urls.txt

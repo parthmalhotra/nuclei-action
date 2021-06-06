@@ -1,0 +1,15 @@
+name: "Subdomain finding using subfinder"
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * FRI"
+
+jobs:
+  worker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: v1dhun/subfinder-action@master
+        with:
+          domains-list: domains.txt

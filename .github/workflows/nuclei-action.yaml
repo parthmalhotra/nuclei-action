@@ -15,7 +15,7 @@ jobs:
           path: /home/runner/go/bin/nuclei
           key: ${{ runner.os }}-${{ hashFiles('/home/runner/go/bin/nuclei') }}
 
-      - uses: projectdiscovery/nuclei-action@dev
+      - uses: ehsandeep/nn-action@main
         with:
           target: "https://example.com"
           sarif-export: "nuclei.sarif"

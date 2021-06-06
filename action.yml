@@ -18,7 +18,7 @@ inputs:
   check-alive:
     description: "To check host is alive or not using httpx"
     required: false
-    default: "false"
+    default: false
   config-list:
     description: "Configuration file for API Keys, etc"
     required: false
@@ -30,5 +30,7 @@ runs:
     - run: | 
        GO111MODULE=on go get -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@sarif-integration
       shell: bash
-    - run: nuclei -list ${{ inputs.urls }} --silent -sf lol
+
+    - run: nuclei -silent -ut -ud ./
+    - run: nuclei -list ${{ inputs.urls }} --silent -sf lol -t ./
       shell: bash

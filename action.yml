@@ -6,7 +6,7 @@ branding:
   color: "blue"
 
 inputs:
-  domains-list:
+  urls:
     description: "List of domains to run subfinder"
     required: true
   telegram-chat-id:
@@ -28,7 +28,7 @@ runs:
   using: "composite"
   steps:
     - run: | 
-       GO111MODULE=on go get -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder
+       GO111MODULE=on go get -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@sarif-integration
       shell: bash
-    - run: subfinder -config ${{ inputs.config-list }} -t 50 -dL ${{ inputs.domains-list }} --silent -o hosts.txt
+    - run: nuclei -list ${{ inputs.urls }} --silent -sf lol
       shell: bash

@@ -17,3 +17,8 @@ jobs:
         with:
           urls: urls.txt
           json: true
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: nuclei.sarif
+          path: nuclei.sarif

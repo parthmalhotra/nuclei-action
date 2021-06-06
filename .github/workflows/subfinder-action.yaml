@@ -10,6 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: v1dhun/subfinder-action@master
+      - uses: ehsandeep/nuclei-action@main
         with:
           domains-list: domains.txt

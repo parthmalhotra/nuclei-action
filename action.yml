@@ -22,7 +22,6 @@ inputs:
   config-list:
     description: "Configuration file for API Keys, etc"
     required: false
-    default: "config.yaml"
 
 
 runs:

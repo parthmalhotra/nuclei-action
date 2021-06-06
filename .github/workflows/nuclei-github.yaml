@@ -1,4 +1,4 @@
-name: Nuclei - DAST
+name: DEMO 1
 
 on:
   workflow_dispatch:

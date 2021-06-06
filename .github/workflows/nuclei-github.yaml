@@ -13,4 +13,4 @@ jobs:
         with:
           target: https://example.com
           github-report: true
-          report-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}

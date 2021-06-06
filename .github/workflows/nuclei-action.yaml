@@ -25,12 +25,12 @@ jobs:
 
       - name: Downloading Nuclei Templates
         run: |
-          nuclei -update-templates
+          nuclei -update-templates -silent
         shell: bash
 
       - name: Running Nuclei
         run: |
-          echo https://example.com | nuclei -t ~/nuclei-templates -irr -sf nuclei.sarif
+          echo https://example.com | nuclei -silent -t ~/nuclei-templates -irr -sf nuclei.sarif
         shell: bash
 
       - name: Upload SARIF file

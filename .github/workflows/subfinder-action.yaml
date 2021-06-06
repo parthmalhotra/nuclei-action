@@ -18,7 +18,7 @@ jobs:
           urls: urls.txt
           json: true
 
-      - uses: actions/upload-artifact@v2
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v1
         with:
-          name: nuclei.sarif
-          path: nuclei.sarif
+          sarif_file: nuclei.sarif

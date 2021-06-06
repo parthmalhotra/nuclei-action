@@ -18,9 +18,3 @@ jobs:
       - uses: ehsandeep/nn-action@main
         with:
           target: "https://example.com"
-          sarif-export: "nuclei.sarif"
-
-      - name: Update GitHub Security alert Dashboard
-        uses: github/codeql-action/upload-sarif@v1
-        with:
-          sarif_file: nuclei.sarif

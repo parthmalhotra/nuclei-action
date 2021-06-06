@@ -30,7 +30,7 @@ jobs:
 
       - name: Running Nuclei
         run: |
-          nuclei -silent -t ~/nuclei-templates
+          echo https://example.com | nuclei -silent -tags cve2019 -sf nuclei.sarif
         shell: bash
 
       - name: Upload SARIF file

@@ -12,7 +12,7 @@ jobs:
       - uses: ehsandeep/nn-action@main
         with:
           target: https://example.com
-          sarif-export: true
+          sarif-export: nuclei.sarif
 
       - name: GitHub Dashboard update
         uses: github/codeql-action/upload-sarif@v1

@@ -19,8 +19,8 @@ inputs:
     description: "Output format"
     required: false
     default: false
-  config-list:
-    description: "Configuration file for API Keys, etc"
+  config:
+    description: "Nuclei config file"
     required: false
 
 
@@ -30,5 +30,5 @@ runs:
     - run: | 
        GO111MODULE=on go get -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@sarif-integration
        nuclei -silent -ut
-       nuclei -list ${{ inputs.urls }} --silent -sf lol -t ~/nuclei-templates/ ${{ inputs.json }}
+       nuclei -list ${{ inputs.urls }} --silent -sf nuclei.sarif -t ~/nuclei-templates/ ${{ inputs.json }} -config ${{ inputs.config }}
       shell: bash

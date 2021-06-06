@@ -1,38 +1,27 @@
-name: Nuclei Action
+name: Nuclei - DAST
 
 on:
-    workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  worker:
+    runs-on: ubuntu-20.04
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@master
+      - uses: actions/checkout@v2
 
-      - name: Setup golang
-        uses: actions/setup-go@v2
+      - uses: actions/cache@v2
+        id: cache
         with:
-          go-version: 1.14
+          path: /home/runner/go/bin/nuclei
+          key: ${{ runner.os }}-${{ hashFiles('/home/runner/go/bin/nuclei') }}
 
-      - name: Setting up ProjectDiscovery tools
-        env:
-          GO111MODULE: on
-        run: |
-          go get -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@8b52645905784a31b496aae57dccec7629328544
-        shell: bash
-
-      - name: Downloading Nuclei Templates
-        run: |
-          nuclei -update-templates -silent
-        shell: bash
-
-      - name: Running Nuclei
-        run: |
-          nuclei -u test -silent -t test/file.yaml -sf nuclei.sarif
-        shell: bash
-
-      - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@v1
+      - uses: projectdiscovery/nuclei-action@main
         with:
-          sarif_file: nuclei.sarif
+          urls: "urls.txt"
+          templates: "nuclei-templates"
+          output: "nuclei.log"
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: nuclei.log
+          path: nuclei.log

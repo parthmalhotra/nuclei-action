@@ -19,7 +19,7 @@ jobs:
         env:
           GO111MODULE: on
         run: |
-          go get -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@c913612fd369b93241d6e9e71c3bcea379e4988f
+          go get -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@8b52645905784a31b496aae57dccec7629328544
         shell: bash
 
       - name: Downloading Nuclei Templates

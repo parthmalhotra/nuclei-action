@@ -29,8 +29,6 @@ runs:
   steps:
     - run: | 
        GO111MODULE=on go get -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@sarif-integration
-      shell: bash
-
-    - run: nuclei -silent -ut
-    - run: nuclei -list ${{ inputs.urls }} --silent -sf lol -t ~/nuclei-templates/
+       nuclei -silent -ut
+       nuclei -list ${{ inputs.urls }} --silent -sf lol -t ~/nuclei-templates/
       shell: bash

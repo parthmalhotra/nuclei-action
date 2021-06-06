@@ -16,11 +16,10 @@ jobs:
           go-version: 1.14
 
       - name: Setting up ProjectDiscovery tools
-        if: steps.cache-go.outputs.cache-hit != 'true'
         env:
           GO111MODULE: on
         run: |
-          go get -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@eb96e701b50767ec854601af7053795f4c2779b9
+          go get -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@2c0cea1a3f3c60d73731fc9f910eabb60cb714d8
         shell: bash
 
       - name: Downloading Nuclei Templates

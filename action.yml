@@ -18,7 +18,7 @@ inputs:
   json:
     description: "Output format"
     required: false
-    default: false
+    default: "-json"
   config:
     description: "Nuclei config file"
     required: false

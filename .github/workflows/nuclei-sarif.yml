@@ -1,0 +1,20 @@
+name: DEMO 1
+
+on:
+  workflow_dispatch:
+
+jobs:
+  worker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: ehsandeep/nn-action@main
+        with:
+          target: https://example.com
+          sarif-export: true
+
+      - name: GitHub Dashboard update
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: nuclei.sarif

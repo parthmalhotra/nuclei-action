@@ -30,7 +30,7 @@ jobs:
 
       - name: Running Nuclei
         run: |
-          echo https://example.com | nuclei -silent -t ~/nuclei-templates -irr -sf nuclei.sarif
+          nuclei -silent -t ~/nuclei-templates
         shell: bash
 
       - name: Upload SARIF file

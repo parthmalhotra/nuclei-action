@@ -15,10 +15,9 @@ jobs:
           path: /home/runner/go/bin/nuclei
           key: ${{ runner.os }}-${{ hashFiles('/home/runner/go/bin/nuclei') }}
 
-      - uses: projectdiscovery/nuclei-action@main
+      - uses: projectdiscovery/nuclei-action@dev
         with:
-          urls: "urls.txt"
-          templates: "."
+          target: "https://example.com"
           output: "nuclei.log"
 
       - uses: actions/upload-artifact@v2

@@ -31,5 +31,5 @@ runs:
     - run: | 
        GO111MODULE=on go get -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder
       shell: bash
-    - run: ./subfinder -config ${{ inputs.config-list }} -t 50 -dL ${{ inputs.domains-list }} --silent -o hosts.txt
+    - run: subfinder -config ${{ inputs.config-list }} -t 50 -dL ${{ inputs.domains-list }} --silent -o hosts.txt
       shell: bash

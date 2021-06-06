@@ -9,12 +9,6 @@ inputs:
   urls:
     description: "List of domains to run subfinder"
     required: true
-  telegram-chat-id:
-    description: "Telegram chat id to send notifications"
-    required: false
-  telegram-token:
-    description: "Telegram bot token to send notifications"
-    required: false
   json:
     description: "Output format"
     required: false
@@ -22,7 +16,9 @@ inputs:
   config:
     description: "Nuclei config file"
     required: false
-
+  output:
+    description: "output file"
+    required: false
 
 runs:
   using: "composite"
@@ -30,5 +26,5 @@ runs:
     - run: | 
        GO111MODULE=on go get -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@sarif-integration
        nuclei -silent -ut
-       nuclei -list ${{ inputs.urls }} --silent -sf nuclei.sarif -t ~/nuclei-templates/ ${{ inputs.json }} -config ${{ inputs.config }}
+       nuclei -list ${{ inputs.urls }} --silent -sf nuclei.sarif -t ~/nuclei-templates/ ${{ inputs.json }} -config ${{ inputs.config }}  -o ${{ inputs.output }}
       shell: bash

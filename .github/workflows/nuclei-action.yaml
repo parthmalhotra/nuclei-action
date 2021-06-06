@@ -18,7 +18,6 @@ jobs:
       - uses: projectdiscovery/nuclei-action@main
         with:
           urls: "urls.txt"
-          templates: "nuclei-templates"
           output: "nuclei.log"
 
       - uses: actions/upload-artifact@v2

@@ -16,3 +16,4 @@ jobs:
       - uses: ehsandeep/nuclei-action@main
         with:
           urls: urls.txt
+          json: true

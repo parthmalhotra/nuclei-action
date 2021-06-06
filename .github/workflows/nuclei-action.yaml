@@ -11,4 +11,4 @@ jobs:
 
       - uses: ehsandeep/nn-action@main
         with:
-          target: "https://example.com"
+          target: https://example.com

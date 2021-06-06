@@ -12,3 +12,5 @@ jobs:
       - uses: ehsandeep/nn-action@main
         with:
           target: https://example.com
+          github-report: true
+          report-token: ${{ secrets.GITHUB_TOKEN }}

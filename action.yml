@@ -1,18 +1,12 @@
-name: "Subdomain finding using subfinder"
-author: "v1dhun"
-description: "Subfinder is a subdomain discovery tool developed by ProjectDiscovery.io."
-branding:
-  icon: "alert-circle"
-  color: "blue"
+name: Nuclei - DAST
 
 inputs:
+  target:
+    description: "Target to scan for Nuclei"
+    required: false
   urls:
     description: "List of domains to run subfinder"
-    required: true
-  json:
-    description: "Output format"
     required: false
-    default: "-json"
   config:
     description: "Nuclei config file"
     required: false
@@ -26,5 +20,5 @@ runs:
     - run: | 
        GO111MODULE=on go get -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@sarif-integration
        nuclei -silent -ut
-       nuclei -list ${{ inputs.urls }} --silent -sf nuclei.sarif -t ~/nuclei-templates/ ${{ inputs.json }} -config ${{ inputs.config }}  -o ${{ inputs.output }}
+       nuclei -silent -target ${{ inputs.target }} --silent -sf nuclei.sarif -t ~/nuclei-templates/ -config ${{ inputs.config }}
       shell: bash

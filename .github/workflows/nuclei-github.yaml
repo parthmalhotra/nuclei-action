@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: ehsandeep/nn-action@main
+      - uses: ehsandeep/nuclei-actionn@main
         with:
           target: https://example.com
 

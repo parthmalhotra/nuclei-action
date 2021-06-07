@@ -5,7 +5,7 @@ inputs:
     description: "Target to scan for Nuclei"
     required: false
   urls:
-    description: "List of domains to run subfinder"
+    description: "List of domains to run Nuclei"
     required: false
   config:
     description: "Nuclei config file"

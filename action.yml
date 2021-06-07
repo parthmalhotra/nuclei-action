@@ -20,5 +20,5 @@ runs:
     - run: | 
        GO111MODULE=on go get -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@sarif-integration
        nuclei -silent -ut
-       nuclei -silent -target ${{ inputs.target }} --silent -sf nuclei.sarif -t ~/nuclei-templates/ -config ${{ inputs.config }} -o ${{ inputs.output }}
+       nuclei -silent -target ${{ inputs.target }} --silent -sf nuclei.sarif -t ~/nuclei-templates/ -o ${{ inputs.output }}
       shell: bash
